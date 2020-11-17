@@ -1,63 +1,31 @@
 package com.example.misegundaactividad.actividadessecundarias
 
 import android.os.Bundle
-import android.util.Log
-import android.widget.TextView
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import com.example.misegundaactividad.R
 
-class SecondActivity : AppCompatActivity() {
-
+class SecondActivity : AppCompatActivity(){
     companion object {
-        const val VAR1 = "VARIABLE1"
+        const val VAR1 = "0"
     }
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.second_activity)
-        Log.d(SecondActivity::class.simpleName, "onCreate")
 
-        val tvNormal = findViewById<TextView>(R.id.tvNormal)
+        val imagen1 = findViewById<ImageView>(R.id.oldschool)
+        val imagen2 = findViewById<ImageView>(R.id.deatheater)
 
-        val saludo = intent.getStringExtra(VAR1)
 
-        saludo?.let {
-            tvNormal.text = saludo
+        val mostrar = intent.getStringExtra(VAR1)
+
+        if(mostrar=="1"){
+            imagen1.isVisible=true
+            imagen2.isVisible=false
+        }else{
+            imagen1.isVisible=false
+            imagen2.isVisible=true
         }
-    }
-
-    override fun onStart() {
-        super.onStart()
-        Log.d(SecondActivity::class.simpleName, "onStart")
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Log.d(SecondActivity::class.simpleName, "onResume")
-
-    }
-
-    override fun onRestart() {
-        super.onRestart()
-        Log.d(SecondActivity::class.simpleName, "onRestart")
-
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Log.d(SecondActivity::class.simpleName, "onPause")
-
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Log.d(SecondActivity::class.simpleName, "onStop")
-
-    }
-
-    override fun onDestroy() {
-        Log.d(SecondActivity::class.simpleName, "onDestroy")
-        super.onDestroy()
     }
 }
